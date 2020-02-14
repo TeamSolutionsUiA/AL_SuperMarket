@@ -27,10 +27,11 @@ public class EndShoppingEvent extends Event {
 
     @Override
     public Event happen() {
-        customer.leaveTime = customer.checkoutTime + customer.checkoutDuration;
-        return null;
+        if(customer.numProducts == 0){
+            return new LeaveEmptyEvent(customer);
+        }
+        return new BeginQueueEvent(customer);
     }
-
 
     @Override
     public String toString() {

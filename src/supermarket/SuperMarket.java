@@ -28,6 +28,7 @@ public class SuperMarket {
     Checkout[] checkouts;
     List<Customer> customers;
     List<Event> init;
+    List<Customer> customerHistory;
 
 
     public SuperMarket() {
@@ -41,6 +42,7 @@ public class SuperMarket {
             init.add(new BeginShoppingEvent(c));
             customers.add(c);
         }
+        customerHistory = new ArrayList<>();
     }
 
 
@@ -48,5 +50,9 @@ public class SuperMarket {
         EventSim sim = EventSim.getInstance();
         sim.setup(init);
         sim.run();
+    }
+    
+    public Checkout getCheckout(){
+        return checkouts[0];
     }
 }

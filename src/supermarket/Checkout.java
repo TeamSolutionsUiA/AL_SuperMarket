@@ -5,6 +5,9 @@
  */
 package supermarket;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 /**
  *
@@ -19,10 +22,23 @@ public class Checkout {
 
     SuperMarket shop;
     String name;
-
+    Queue<Customer> checkoutQueue;
+    Boolean isActive;
 
     public Checkout(SuperMarket shop, int i) {
         this.shop = shop;
         this.name = "Checkout" + i;
+        checkoutQueue = new LinkedList();
+        isActive = false;
+    }
+    
+    public boolean addCustomerToQueue(Customer customer){
+        checkoutQueue.add(customer);
+        customer.checkoutDuration = customer.numProducts * PROD_DURATION + PAY_DURATION;
+        if (!isActive) {
+            isActive = true;
+            return false;
+        }
+        return true;
     }
 }
