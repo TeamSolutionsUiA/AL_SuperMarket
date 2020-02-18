@@ -41,4 +41,8 @@ public class Checkout {
         }
         return true;
     }
+    
+    public int getQueueSize(){
+        return checkoutQueue.size();
+    }
 }
