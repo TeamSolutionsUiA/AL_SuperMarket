@@ -22,6 +22,9 @@ public class Customer {
     public static final int MAX_SHOP_TIME = 50;
     public static final int MIN_SHOP_TIME = 1;
 
+    public static final int MAX_BEGIN_TIME = 500;
+    public static final int MIN_BEGIN_TIME = 1;
+    
     SuperMarket shop;
     String name;
 
@@ -38,7 +41,7 @@ public class Customer {
     public Customer(SuperMarket shop, int i) {
         this.shop = shop;
         name = "Cust" + i;
-        beginShoppingTime = i;
+        beginShoppingTime = EventSim.nextInt(MIN_BEGIN_TIME, MAX_BEGIN_TIME);
         numProducts = EventSim.nextInt(MIN_PRODUCTS, MAX_PRODUCTS);
         shoppingDuration = EventSim.nextInt(MIN_SHOP_TIME, MAX_SHOP_TIME);
         endShoppingTime = beginShoppingTime + shoppingDuration;
